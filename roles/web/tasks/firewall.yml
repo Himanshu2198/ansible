@@ -1,0 +1,7 @@
+- name: open firewall port 8080
+  ansible.posix.firewalld:
+    # service: http
+    port: "{{appport}}"
+    state: enabled
+    immediate: yes
+    permanent: 1 

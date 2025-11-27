@@ -1,0 +1,14 @@
+#create diskfree report save in /tmp/diskreport.tx on allservers group
+- name: create diskfree report and copy to tmp dir in all nodes
+  hosts: all
+  tasks:
+    - name: create diskfree report
+      shell: "df -h > /tmp/diskreport.txt"
+    - name: get the content of disk report
+      command: "cat /tmp/diskreport.txt"
+      register: commandoutputregister
+    - name: view the output of the previous command
+      ansible.builtin.debug:
+        msg:
+          - "the command took {{ commandoutputregister.delta }}"
+          - "{{ commandoutputregister.stdout_lines }}"

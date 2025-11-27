@@ -1,0 +1,7 @@
+- name: Open port 8080 in all servers using import task
+  hosts: all
+  tasks:
+    - name: Open port 8080 using import task
+      ansible.builtin.import_tasks: tasks/firewall.yml
+      vars:
+        appport: 8080/tcp

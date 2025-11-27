@@ -1,0 +1,5 @@
+#import playbooks
+- name: install frontend
+  ansible.builtin.import_playbook: 4.webserver.yml
+- name: install backend
+  ansible.builtin.import_playbook: 5.dbserver.yml

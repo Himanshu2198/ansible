@@ -1,0 +1,19 @@
+#install dovecot if "ansible_memtotal_mb" more than 4GB RAM
+- name: deploy dovecot when total RAM memory > 4GB
+  hosts: web
+  tasks: 
+    - name: install dovecot
+      package: 
+        name: dovecot
+        state: latest
+      when: ansible_memtotal_mb >=4096
+    - name: install apache in RedHat family OSes
+      dnf:
+        name: httpd
+        state: latest
+      when: ansible_os_family == "RedHat"
+    - name: install nginx in debian family OSes
+      apt:
+        name: nginx
+        state: latest
+      when: ansible_os_family == "debian"

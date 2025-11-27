@@ -1,0 +1,10 @@
+---
+# tasks file for web
+- name: install web-server with import task
+  ansible.builtin.import_tasks: install.yml
+  vars:
+    pkg: httpd
+- name: enable port with import task
+  ansible.builtin.import_tasks: firewall.yml
+  vars:
+    appport: 8080/tcp

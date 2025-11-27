@@ -1,0 +1,10 @@
+---
+# tasks file for db
+- name: install maria-db using import task
+  ansible.builtin.import_tasks: install.yml
+  vars:
+    pkg: mariadb-server
+- name: enable service using import task
+  ansible.builtin.import_tasks: service.yml 
+  vars:
+    appservice: mariadb.service
