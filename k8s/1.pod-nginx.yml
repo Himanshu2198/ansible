@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demopod
+  labels:
+    app.kubernetes.io/name: demopod
+    env: qa
+    project: delivery
+spec:
+  containers:
+  - name: democont
+    image: nginx
+    ports:
+      - containerPort: 80
+  - name: dbcont
+    image: nginx
+    ports:
+      - containerPort: 3306
